@@ -2,7 +2,7 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "baseResourceName": {
+    "siteName": {
       "type": "string",
       "metadata": {
         "description": "Name of the resource"
@@ -11,10 +11,9 @@
     },
     "environments": {
       "defaultValue": [
-        "Dev",
-        "QA",
-        "UAT",
-        "Preview"
+        "staging",
+        "demo",
+        "test"
       ],
       "type": "array",
       "metadata": {
@@ -26,8 +25,8 @@
 
   "variables": {
     "standardPlanMaxAdditionalSlots": 4,
-    "webAppPortalName": "[concat(parameters('baseResourceName'), 'Portal')]",
-    "appServicePlanName": "[concat('AppServicePlan-', parameters('baseResourceName'))]"
+    "webAppPortalName": "[concat(parameters('siteName'), 'Portal')]",
+    "appServicePlanName": "[concat('AppServicePlan-', parameters('siteName'))]"
   },
 
   "resources": [
